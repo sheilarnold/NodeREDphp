@@ -1,0 +1,24 @@
+[
+    {
+        "id": "339a034202bd194d",
+        "type": "mysql",
+        "z": "b47f4885821125e8",
+        "mydb": "169e3dae6c103095",
+        "name": "Banco",
+        "x": 610,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "169e3dae6c103095",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "172.17.0.1",
+        "port": "3307",
+        "db": "db_nodeRed",
+        "tz": "",
+        "charset": "UTF8"
+    }
+]

@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+
+  db:
+    image: mysql:8.0
+    container_name: db_nodeRed
+
+    environment:
+      - MYSQL_DATABASE=db_nodeRed
+      - MYSQL_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=bancodedados
+      
+    ports:
+      - "3307:3306"
+
+    expose:
+      - "3306"
+    
+    volumes:
+      - /var/db/node_red:/SQL
+  
