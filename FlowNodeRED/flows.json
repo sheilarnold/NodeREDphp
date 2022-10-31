@@ -1,5 +1,13 @@
 [
     {
+        "id": "b47f4885821125e8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "339a034202bd194d",
         "type": "mysql",
         "z": "b47f4885821125e8",
@@ -12,6 +20,64 @@
         ]
     },
     {
+        "id": "fa8a2cb1c73a0be7",
+        "type": "mqtt in",
+        "z": "b47f4885821125e8",
+        "name": "",
+        "topic": "leitura",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "44068a61844defc4",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 110,
+        "y": 120,
+        "wires": [
+            [
+                "da7f8557c88f4114"
+            ]
+        ]
+    },
+    {
+        "id": "da7f8557c88f4114",
+        "type": "function",
+        "z": "b47f4885821125e8",
+        "name": "registrar_valor_recebido",
+        "func": "value = msg.payload;\n\nmsg.topic = \"INSERT INTO Leitura(`valor`) VALUES('\" + value + \"');\"\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 120,
+        "wires": [
+            [
+                "ea523e17c95511c8",
+                "339a034202bd194d"
+            ]
+        ]
+    },
+    {
+        "id": "ea523e17c95511c8",
+        "type": "debug",
+        "z": "b47f4885821125e8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "topic",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 80,
+        "wires": []
+    },
+    {
         "id": "169e3dae6c103095",
         "type": "MySQLdatabase",
         "name": "",
@@ -20,5 +86,31 @@
         "db": "db_nodeRed",
         "tz": "",
         "charset": "UTF8"
+    },
+    {
+        "id": "44068a61844defc4",
+        "type": "mqtt-broker",
+        "name": "Broker MQTT",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
     }
 ]
